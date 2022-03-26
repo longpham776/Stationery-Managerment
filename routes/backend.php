@@ -1,0 +1,33 @@
+<?php
+Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\backend'],function(){
+    Route::get('/','DashboardController@index')->name('ad.home');
+    Route::get('/qldh','DashboardController@qldh')->name('ad.qldh');
+    Route::get('/qldm','DashboardController@qldm')->name('ad.qldm');
+    Route::get('/qlkh','DashboardController@qlkh')->name('ad.qlkh');
+    Route::get('/qlsp','DashboardController@qlsp')->name('ad.qlsp');
+    Route::get('/qltv','DashboardController@qltv')->name('ad.qltv');
+    Route::get('/login','DashboardController@login')->name('ad.login');
+    Route::get('/logout','DashboardController@logout')->name('ad.logout');
+    Route::get('/themdm','DashboardController@themdm')->name('ad.themdm');
+    Route::get('/xoadm/{id}','DashboardController@xoadm')->name('ad.xoadm');
+    Route::get('/suadm/{id}','DashboardController@suadm')->name('ad.suadm');
+    Route::get('/themsp','DashboardController@themsp')->name('ad.themsp');
+});
+Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\backend'],function(){
+    Route::post('/postlogin','DashboardController@postlogin')->name('postlogin');
+    Route::post('/postthemdm','DashboardController@postthemdm')->name('postthemdm');
+    Route::post('/postsuadm','DashboardController@postsuadm')->name('postsuadm');
+});
+Route::group(['prefix'=>'user','namespace'=>'App\Http\Controllers\backend'],function(){
+    Route::get('/loginuser','DashboardController@loginuser')->name('loginuser');
+    Route::get('/register','DashboardController@register')->name('register');
+    Route::get('/changepass/{email}','DashboardController@changepass')->name('changepass');
+    Route::get('/getsendmail','SendMailController@getsendmail')->name('getsendmail');
+});
+Route::group(['prefix'=>'user','namespace'=>'App\Http\Controllers\backend'],function(){
+    Route::post('/postloginuser','DashboardController@postloginuser')->name('postloginuser');
+    Route::post('/postregister','DashboardController@postregister')->name('postregister');
+    Route::post('/postchangepass','DashboardController@postchangepass')->name('postchangepass');
+});
+Route::post('send-mail', [App\Http\Controllers\backend\SendMailController::class, 'sendMail'])->name('sendmail');
+?>
